@@ -58,24 +58,4 @@ impl Aesthetix for TokyoNight {
     fn dark_mode_visuals(&self) -> bool {
         true
     }
-
-    fn margin_style(&self) -> f32 {
-        12.0
-    }
-
-    fn button_padding(&self) -> egui::Vec2 {
-        egui::Vec2 { x: 12.0, y: 10.0 }
-    }
-
-    fn item_spacing_style(&self) -> f32 {
-        18.0
-    }
-
-    fn scroll_bar_width_style(&self) -> f32 {
-        14.0
-    }
-
-    fn rounding_visuals(&self) -> f32 {
-        6.0
-    }
 }

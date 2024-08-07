@@ -1,11 +1,11 @@
 [package]
-name = "egui-aesthetix"
-version = "0.2.3"
-authors = ["Matt Williams <matt.k.williams@protonmail.com>"]
-description = "A Uniform and programmatic approach to theming Egui applications"
+name = "egui-aesthetix-lj"
+version = "0.2.4"
+authors = ["Matt Williams <matt.k.williams@protonmail.com>, Lothar Joeckel <lothar.joeckel@gmail.com>"]
+description = "A Uniform and programmatic approach to theming Egui applications with some enhancements"
 edition = "2021"
-homepage = "https://github.com/thebashpotato/egui-aesthetix"
-repository = "https://github.com/thebashpotato/egui-aesthetix"
+homepage = "https://github.com/ljoeckel/egui-aesthetix-lj.git"
+repository = "https://github.com/ljoeckel/egui-aesthetix-lj.git"
 documentation = "https://docs.rs/egui-aesthetix/"
 keywords = ["egui", "theming"]
 categories = ["gui"]
@@ -20,7 +20,7 @@ nord = []
 tokyo_night = []
 
 [dependencies]
-egui = "0.27"
+egui = "0.28"
 
 [lib]
 name = "egui_aesthetix"

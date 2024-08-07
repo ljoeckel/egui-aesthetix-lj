@@ -75,34 +75,78 @@ pub trait Aesthetix {
     /// True specifies a dark mode, false specifies a light mode.
     fn dark_mode_visuals(&self) -> bool;
 
+    fn window_shadow(&self) -> egui::epaint::Shadow {
+        egui::epaint::Shadow {
+            spread: 2.0,
+            blur: 16.0,
+            //color: egui::Color32::from_rgba_premultiplied(0, 0, 0, 96),
+            color: egui::Color32::from_rgba_premultiplied(19, 18, 18, 96),
+            ..Default::default()
+        }
+    }
+
+    fn popup_shadow(&self) -> egui::epaint::Shadow {
+        egui::epaint::Shadow {
+            spread: 2.0,
+            blur: 16.0,
+            color: egui::Color32::from_rgba_premultiplied(19, 18, 18, 96),
+            ..Default::default()
+        }
+    }
+
+    fn text_cursor(&self) -> egui::style::TextCursorStyle {
+        egui::style::TextCursorStyle {
+            stroke: egui::Stroke::new(
+                2.0,
+                self.fg_primary_text_color_visuals().unwrap_or_default(),
+            ),
+            ..Default::default()
+        }
+    }
+
+    fn resize_corner_size(&self) -> f32 {
+        12.0
+    }
+
     /// Horizontal and vertical margins within a menu frame.
     /// This value is used for all margins, in windows, panes, frames etc.
     /// Using the same value will yield a more consistent look.
     ///
     /// - Egui default is 6.0
-    fn margin_style(&self) -> f32;
+    fn margin_style(&self) -> f32 {
+        6.0
+    }
 
     /// Button size is text size plus this on each side.
     ///
     /// - Egui default is { x: 6.0, y: 4.0 }
-    fn button_padding(&self) -> egui::Vec2;
+    //fn button_padding(&self) -> egui::Vec2;
+    fn button_padding(&self) -> egui::Vec2 {
+        egui::Vec2 { x: 6.0, y: 4.0 }
+    }
 
     /// Horizontal and vertical spacing between widgets.
     /// If you want to override this for special cases use the `add_space` method.
     /// This single value is added for the x and y coordinates to yield a more consistent look.
     ///
     /// - Egui default is 4.0
-    fn item_spacing_style(&self) -> f32;
+    fn item_spacing_style(&self) -> f32 {
+        4.0
+    }
 
     /// Scroll bar width.
     ///
     /// - Egui default is 6.0
-    fn scroll_bar_width_style(&self) -> f32;
+    fn scroll_bar_width_style(&self) -> f32 {
+        6.0
+    }
 
     /// Custom rounding value for all buttons and frames.
     ///
     /// - Egui default is 4.0
-    fn rounding_visuals(&self) -> f32;
+    fn rounding_visuals(&self) -> f32 {
+        4.0
+    }
 
     /// Controls the sizes and distances between widgets.
     /// The following types of spacing are implemented.
@@ -219,7 +263,7 @@ pub trait Aesthetix {
             weak_bg_fill: self.bg_auxiliary_color_visuals(),
             bg_stroke: egui::Stroke {
                 width: 1.0,
-                color: self.bg_triage_color_visuals(),
+                color: self.fg_primary_text_color_visuals().unwrap_or_default(), //self.bg_triage_color_visuals(),
             },
             rounding: egui::Rounding {
                 nw: self.rounding_visuals(),
@@ -287,7 +331,7 @@ pub trait Aesthetix {
             bg_fill: self.primary_accent_color_visuals(),
             stroke: egui::Stroke {
                 width: 1.0,
-                color: self.bg_primary_color_visuals(),
+                color: self.fg_primary_text_color_visuals().unwrap_or_default(),
             },
         }
     }
@@ -362,11 +406,7 @@ pub trait Aesthetix {
                     sw: self.rounding_visuals(),
                     se: self.rounding_visuals(),
                 },
-                window_shadow: egui::epaint::Shadow {
-                    spread: 32.0,
-                    color: egui::Color32::from_rgba_premultiplied(0, 0, 0, 96),
-                    ..Default::default()
-                },
+                window_shadow: self.window_shadow(),
                 window_fill: self.bg_primary_color_visuals(),
                 window_stroke: egui::Stroke {
                     width: 1.0,
@@ -378,13 +418,9 @@ pub trait Aesthetix {
                     sw: self.rounding_visuals(),
                     se: self.rounding_visuals(),
                 },
-                popup_shadow: egui::epaint::Shadow {
-                    spread: 16.0,
-                    color: egui::Color32::from_rgba_premultiplied(19, 18, 18, 96),
-                    ..Default::default()
-                },
-                resize_corner_size: 12.0,
-                text_cursor_preview: false,
+                popup_shadow: self.popup_shadow(),
+                resize_corner_size: self.resize_corner_size(),
+                text_cursor: self.text_cursor(),
                 clip_rect_margin: 3.0,
                 button_frame: true,
                 collapsing_header_frame: true,

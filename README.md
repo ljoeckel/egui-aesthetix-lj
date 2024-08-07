@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Egui-Aesthetix</h1>
+  <h1>Egui-Aesthetix-lj</h1>
 </div>
 <br>
 <div align="center">
@@ -20,6 +20,7 @@
 - [License](#license)
 
 ## About
+This library is based on Egui-Aesthetix with some minor changes to fit my adaption of egui-dashboard which is used for my project 'egui-dashboard-duplicate-file-finder' (https://github.com/ljoeckel/egui-dashboard-duplicate-file-finder)
 
 This library is my answer to theming egui. There are other libraries, and approaches.
 I like this method because it is trait based, so many themes could be added to this crate for everyone to use.
@@ -136,3 +137,4 @@ Small note: If editing the README, please conform to the [standard-readme](https
 ## License
 
 MIT © 2023 Matt Williams
+For changes MIT © 2023 Lothar Joeckel
